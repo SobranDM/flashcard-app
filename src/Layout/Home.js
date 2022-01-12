@@ -3,7 +3,7 @@ import React from 'react';
 function Home() {
     return (
         <div>
-            <button id="create-deck">Create Deck</button>
+            <button id="create-deck">Create Decks</button>
         </div>
     )
 }
