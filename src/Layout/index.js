@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import 'bootstrap';
 
+// Component imports
 import Header from "./Header";
 import NotFound from "./NotFound";
 import Home from "./Home";
@@ -9,7 +10,9 @@ import Study from "./Study";
 import CreateDeck from "./CreateDeck";
 import Deck from "./Deck/Deck";
 
+
 function Layout() {
+
   return (
     <div>
       <Header />
@@ -17,7 +20,7 @@ function Layout() {
         {/* TODO: Implement the screen starting here */}
         <Switch>
           <Route exact path="/">
-            <Home />
+            <Home decks />
           </Route>
           <Route path="/decks/:deckId/study">
             <Study />
