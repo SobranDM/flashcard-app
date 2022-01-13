@@ -38,7 +38,7 @@ function Home() {
 
     const deckList = decks.map((deck) => {
         return (
-            <div className="card" key={deck.id}>
+            <div className="card mb-2" key={deck.id}>
                 <div className="card-body">
                     <div className="d-flex justify-content-between">
                         <h4 className="card-title">{deck.name}</h4>

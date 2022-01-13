@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Deck = () => {
+const ViewDeck = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const Deck = () => {
     )
 }
 
-export default Deck
+export default ViewDeck;

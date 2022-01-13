@@ -6,10 +6,7 @@ import 'bootstrap';
 import Header from "./Header";
 import NotFound from "./NotFound";
 import Home from "./Home";
-import Study from "./Study";
-import CreateDeck from "./CreateDeck";
-import Deck from "./Deck/Deck";
-
+import Decks from "./Decks";
 
 function Layout() {
 
@@ -22,14 +19,8 @@ function Layout() {
           <Route exact path="/">
             <Home decks />
           </Route>
-          <Route path="/decks/:deckId/study">
-            <Study />
-          </Route>
-          <Route path="/decks/new">
-            <CreateDeck />
-          </Route>
-          <Route path="/decks/:deckId">
-            <Deck />
+          <Route path="/decks">
+            <Decks />
           </Route>
           <Route>
             <NotFound />
