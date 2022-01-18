@@ -12,7 +12,7 @@ import EditCard from "./Cards/EditCard";
 const Decks = ({ trail, setTrail }) => {
 
   return (
-    <>
+    <div>
       <nav aria-label="breadcrumb">
         <ol className="breadcrumb">
           <li className="breadcrumb-item" link="/"><a href="/">Home</a></li>
@@ -48,7 +48,7 @@ const Decks = ({ trail, setTrail }) => {
           <ViewDeck setTrail={setTrail} />
         </Route>
       </Switch>
-    </>
+    </div>
   );
 };
 

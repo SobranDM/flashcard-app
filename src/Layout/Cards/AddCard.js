@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { readDeck, createCard } from "../../utils/api";
+import CardForm from "./CardForm";
 
 const AddCard = ({ setTrail }) => {
   const { deckId } = useParams();
@@ -22,18 +23,14 @@ const AddCard = ({ setTrail }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deckId]);
 
-  function handleChange({ target }) {
-    setFormData({ ...formData, [target.name]: target.value });
-  }
-
-  function handleSubmit(event, button) {
-    event.preventDefault();
-    createCard(deckId, formData);
-    setFormData({ front: "", back: "" });
+  function handleSubmit(button) {
     if (button === "done") {
-      history.push(`/decks/${deckId}`);
+      createCard(deckId, formData).then(history.push(`/decks/${deckId}`));
+    } else {
+      createCard(deckId, formData);
+      setFormData({ front: "", back: "" });
+      setCardsAdded(cardsAdded + 1);
     }
-    setCardsAdded(cardsAdded + 1);
   }
 
   function UserFeedback() {
@@ -49,35 +46,14 @@ const AddCard = ({ setTrail }) => {
   return (
     <div>
       <h3>{deck.name}: Add Card</h3>
-      <form>
-        <div className="form-group d-flex flex-column">
-          <label htmlFor="front">Front:</label>
-          <textarea
-            id="front"
-            name="front"
-            onChange={handleChange}
-            value={formData.front}
-            placeholder="Front side of card"
-          />
-        </div>
-        <div className="form-group d-flex flex-column">
-          <label htmlFor="back">Back:</label>
-          <textarea
-            id="back"
-            name="back"
-            onChange={handleChange}
-            value={formData.back}
-            placeholder="Back side of card"
-          />
-        </div>
-        <button type="button" className="btn btn-secondary mr-2" name="done" onClick={(event) => handleSubmit(event, "done")}>
+      <CardForm formData={formData} setFormData={setFormData} />
+      <button type="button" className="btn btn-secondary mr-2" name="done" onClick={(event) => handleSubmit("done")}>
           Done
         </button>
-        <button type="button" className="btn btn-primary" name="save" onClick={(event) => handleSubmit(event, "save")}>
+        <button type="button" className="btn btn-primary" name="save" onClick={(event) => handleSubmit("save")}>
           Save
         </button>
-        <UserFeedback />
-      </form>
+      <UserFeedback />
     </div>
   );
 };

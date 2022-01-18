@@ -11,8 +11,8 @@
       "id": 2
     },
     {
-      "name": "Test Deckadf",
-      "description": "Test Deck adadsf",
+      "name": "Test Deck",
+      "description": "This is a test deck.",
       "id": 3
     }
   ],
@@ -55,94 +55,46 @@
       "id": 7
     },
     {
-      "front": "This is the front -- with an edit",
-      "back": "This is the back -- with an edit",
-      "id": 8,
-      "deckId": "3"
+      "front": "Test card 1.",
+      "back": "Test description 1.",
+      "deckId": 3,
+      "id": 8
     },
     {
-      "front": "This is anotheradsfd",
-      "back": "And another",
-      "id": 9,
-      "deckId": "3"
+      "front": "Test card 2.",
+      "back": "Test description 2.",
+      "deckId": 3,
+      "id": 9
     },
     {
-      "front": "afda",
-      "back": "adsfas",
+      "front": "Test card 3.",
+      "back": "Test description 3.",
+      "deckId": 3,
+      "id": 10
+    },
+    {
+      "front": "AVB",
+      "back": "AFDAS",
+      "deckId": 3,
+      "id": 11
+    },
+    {
+      "front": "AFda",
+      "back": "asdfdas",
       "deckId": 3,
       "id": 12
     },
     {
-      "front": "adsfasd",
-      "back": "asdfa",
+      "front": "123",
+      "back": "456",
       "deckId": 3,
       "id": 13
     },
     {
-      "front": "asdfasd",
-      "back": "asdfads",
+      "front": "This is the test",
+      "back": "This is the test",
       "deckId": 3,
       "id": 14
-    },
-    {
-      "front": "asdfads",
-      "back": "asdfsd",
-      "deckId": 3,
-      "id": 15
-    },
-    {
-      "front": "asdfa",
-      "back": "asdfads",
-      "deckId": 3,
-      "id": 16
-    },
-    {
-      "front": "adfas",
-      "back": "asdfa",
-      "deckId": 3,
-      "id": 17
-    },
-    {
-      "front": "asdfas",
-      "back": "asdfads",
-      "deckId": 3,
-      "id": 18
-    },
-    {
-      "front": "adfas",
-      "back": "asdfas",
-      "deckId": 3,
-      "id": 19
-    },
-    {
-      "front": "asdfa",
-      "back": "asdfa",
-      "deckId": 3,
-      "id": 20
-    },
-    {
-      "front": "asdfa",
-      "back": "asdfasfa!!!!",
-      "deckId": 3,
-      "id": 21
-    },
-    {
-      "front": "Ateat",
-      "back": "",
-      "deckId": 3,
-      "id": 22
-    },
-    {
-      "front": "asdfa",
-      "back": "asdfa",
-      "deckId": 3,
-      "id": 23
-    },
-    {
-      "front": "Testing1",
-      "back": "",
-      "deckId": 3,
-      "id": 24
     }
   ]
 }

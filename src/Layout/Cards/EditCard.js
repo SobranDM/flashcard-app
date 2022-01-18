@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { readDeck, readCard, updateCard } from '../../utils/api';
+import CardForm from './CardForm';
 
 const EditCard = ({ setTrail }) => {
   const { deckId, cardId } = useParams();
   const [ deck, setDeck ] = useState({});
-  const [ card, setCard ] = useState({});
   const [ formData, setFormData ] = useState({ front: "", back: "" });
   const history = useHistory();
 
@@ -18,18 +18,12 @@ const EditCard = ({ setTrail }) => {
 
     async function loadCard() {
       const response = await readCard(cardId);
-      setCard(response);
       setFormData({ front: response.front, back: response.back });
     }
     loadDeck();
     loadCard();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deckId]);
-  
-   // Update form data in useState
-   function handleChange({ target }) {
-    setFormData({ ...formData, [target.name]: target.value });
-  }
 
   // Handle cancel button
   function handleCancel() {
@@ -49,34 +43,13 @@ const EditCard = ({ setTrail }) => {
   return (
     <div>
       <h3>Edit Card</h3>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group d-flex flex-column">
-          <label htmlFor="front">Front:</label>
-          <textarea
-            id="front"
-            name="front"
-            onChange={handleChange}
-            value={formData.front}
-            placeholder="Front side of card"
-          />
-        </div>
-        <div className="form-group d-flex flex-column">
-          <label htmlFor="back">Back:</label>
-          <textarea
-            id="back"
-            name="back"
-            onChange={handleChange}
-            value={formData.back}
-            placeholder="Back side of card"
-          />
-        </div>
-        <button type="button" className="btn btn-secondary mr-2" name="cancel" onClick={handleCancel}>
+      <CardForm formData={formData} setFormData={setFormData} />
+      <button type="button" className="btn btn-secondary mr-2" name="cancel" onClick={handleCancel}>
           Cancel
         </button>
-        <button type="submit" className="btn btn-primary" name="save">
+        <button type="button" className="btn btn-primary" name="save" onClick={handleSubmit}>
           Save
         </button>
-      </form>
     </div>
   )
 }
