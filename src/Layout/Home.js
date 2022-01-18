@@ -7,9 +7,11 @@ import { deleteDeck } from "../utils/api/index";
 function Home({ setTrail }) {
   const [decks, setDecks] = useState([]);
 
+  // List decks and set them to state
   useEffect(() => {
     listDecks().then(setDecks);
   }, []);
+
   // Setup history variable
   const history = useHistory();
 
@@ -53,7 +55,7 @@ function Home({ setTrail }) {
               <button
                 id="view-deck"
                 className="btn btn-secondary mr-2"
-                onClick={() => viewDeck(deck.id)}>
+                onClick={() => viewDeck(deck.id, deck.name)}>
                 <FontAwesomeIcon icon="eye" /> View
               </button>
               <button
