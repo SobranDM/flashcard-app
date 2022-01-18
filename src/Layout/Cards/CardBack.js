@@ -1,7 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
-
 const CardBack = ({ card, toggleFront, currentCard, setCurrentCard, cardNumbers }) => {
   const history = useHistory();
 
@@ -9,6 +8,7 @@ const CardBack = ({ card, toggleFront, currentCard, setCurrentCard, cardNumbers 
   function handleNext() {
     if (currentCard + 1 >= cardNumbers[1]) {
       if (window.confirm("Do you wish to restart this deck?")) {
+        toggleFront(true);
         setCurrentCard(0);
       } else {
         history.push("/")

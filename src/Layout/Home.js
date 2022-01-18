@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { listDecks } from "../utils/api/index";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { deleteDeck } from "../utils/api/index";
 
 function Home({ setTrail }) {
@@ -56,13 +55,13 @@ function Home({ setTrail }) {
                 id="view-deck"
                 className="btn btn-secondary mr-2"
                 onClick={() => viewDeck(deck.id, deck.name)}>
-                <FontAwesomeIcon icon="eye" /> View
+                View
               </button>
               <button
                 id="study-deck"
                 className="btn btn-primary"
                 onClick={() => studyDeck(deck.id)}>
-                <FontAwesomeIcon icon="book" /> Study
+                Study
               </button>
             </div>
             <div className="d-flex justify-content-end">
@@ -70,7 +69,7 @@ function Home({ setTrail }) {
                 id="delete-deck"
                 className="btn btn-danger"
                 onClick={() => deleteButton(deck.id)}>
-                <FontAwesomeIcon icon="trash-alt" />
+                Delete
               </button>
             </div>
           </div>
@@ -84,7 +83,7 @@ function Home({ setTrail }) {
         id="create-deck"
         className="btn btn-secondary mb-2"
         onClick={createDeck}>
-        <FontAwesomeIcon icon="plus" /> Create Deck
+        Create Deck
       </button>
       {deckList}
     </div>

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { readDeck, deleteCard } from '../../utils/api';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 
 const ViewDeck = ({ setTrail }) => {
   const { deckId } = useParams();
@@ -54,9 +52,9 @@ const ViewDeck = ({ setTrail }) => {
       <div>
         <h3>{deck.name}</h3>
         <p>{deck.description}</p>
-        <button className='btn btn-secondary mr-2' onClick={editDeck}><FontAwesomeIcon icon="pencil-alt" /> Edit</button>
-        <button className='btn btn-primary mr-2' onClick={studyDeck}><FontAwesomeIcon icon="book" /> Study</button>
-        <button className='btn btn-primary' onClick={addCard}><FontAwesomeIcon icon="plus" /> Add Cards</button>
+        <button className='btn btn-secondary mr-2' onClick={editDeck}>Edit</button>
+        <button className='btn btn-primary mr-2' onClick={studyDeck}>Study</button>
+        <button className='btn btn-primary' onClick={addCard}>Add Cards</button>
       </div>
       <div>
         <h2 className='mt-4'>Cards</h2>
@@ -69,8 +67,8 @@ const ViewDeck = ({ setTrail }) => {
                   <p className='card-text col'>{card.back}</p>
                 </div>
                 <div className='d-flex justify-content-end mt-4'>
-                  <button className='btn btn-secondary mr-2' onClick={() => handleEdit(card.id)}><FontAwesomeIcon icon="pencil-alt" /> Edit</button>
-                  <button className='btn btn-danger' onClick={() => handleDelete(card.id)}><FontAwesomeIcon icon="trash-alt" /></button>
+                  <button className='btn btn-secondary mr-2' onClick={() => handleEdit(card.id)}>Edit</button>
+                  <button className='btn btn-danger' onClick={() => handleDelete(card.id)}>Delete</button>
                 </div>
               </div>
             </div>

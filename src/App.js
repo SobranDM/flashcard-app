@@ -2,11 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Layout from "./Layout";
 
-// Font Awesome icon imports
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faPlus, faBook, faTrashAlt, faEye, faHome, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
-
-library.add(faPlus, faTrashAlt, faBook, faEye, faHome, faPencilAlt);
 /**
  * App is a wrapper for <Layout>, you should not need to change this file.
  */

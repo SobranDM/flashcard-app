@@ -1,6 +1,5 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // Import components
 import Study from "./Study";
@@ -16,7 +15,7 @@ const Decks = ({ trail, setTrail }) => {
     <>
       <nav aria-label="breadcrumb">
         <ol className="breadcrumb">
-          <li className="breadcrumb-item" link="/"><a href="/"><FontAwesomeIcon icon="home" /> Home</a></li>
+          <li className="breadcrumb-item" link="/"><a href="/">Home</a></li>
           {trail.map((item, index) => {
             if (index + 1 === trail.length) {
               return <li className="breadcrumb-item active" aria-current="page" key={index}>{item.name}</li>
