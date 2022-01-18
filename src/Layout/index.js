@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState} from "react";
 import { Switch, Route } from "react-router-dom";
 import 'bootstrap';
 
@@ -9,6 +9,7 @@ import Home from "./Home";
 import Decks from "./Decks";
 
 function Layout() {
+  const [trail, setTrail] = useState([]);
 
   return (
     <div>
@@ -17,10 +18,10 @@ function Layout() {
         {/* TODO: Implement the screen starting here */}
         <Switch>
           <Route exact path="/">
-            <Home decks />
+            <Home decks setTrail={setTrail} />
           </Route>
           <Route path="/decks">
-            <Decks />
+            <Decks trail={trail} setTrail={setTrail} />
           </Route>
           <Route>
             <NotFound />

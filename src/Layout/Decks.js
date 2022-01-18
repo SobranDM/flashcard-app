@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import "bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // Import components
 import Study from "./Study";
-import CreateDeck from "./CreateDeck";
+import CreateDeck from "./Deck/CreateDeck";
 import ViewDeck from "./Deck/ViewDeck";
 
-const Decks = () => {
-    const [trail, setTrail] = useState([]);
-
+const Decks = ({ trail, setTrail }) => {
     return (
         <>
           <nav aria-label="breadcrumb">
