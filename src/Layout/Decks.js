@@ -8,6 +8,8 @@ import Study from "./Study";
 import CreateDeck from "./Deck/CreateDeck";
 import ViewDeck from "./Deck/ViewDeck";
 import EditDeck from "./Deck/EditDeck";
+import AddCard from "./Cards/AddCard";
+import EditCard from "./Cards/EditCard";
 
 const Decks = ({ trail, setTrail }) => {
 
@@ -37,6 +39,12 @@ const Decks = ({ trail, setTrail }) => {
         </Route>
         <Route path="/decks/:deckId/edit">
           <EditDeck setTrail={setTrail} />
+        </Route>
+        <Route path="/decks/:deckId/cards/:cardId/edit">
+          <EditCard setTrail={setTrail} />
+        </Route>
+        <Route path="/decks/:deckId/cards/new">
+          <AddCard setTrail={setTrail} />
         </Route>
         <Route path="/decks/:deckId">
           <ViewDeck setTrail={setTrail} />

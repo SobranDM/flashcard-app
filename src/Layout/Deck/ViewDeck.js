@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import { readDeck } from '../../utils/api';
+import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import { readDeck, deleteCard } from '../../utils/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
@@ -37,6 +36,19 @@ const ViewDeck = ({ setTrail }) => {
     history.push(`/decks/${deckId}/cards/new`);
   }
 
+  // Click handler for Edit Card button
+  function handleEdit(pushedId) {
+    history.push(`/decks/${deckId}/cards/${pushedId}/edit`)
+  }
+
+  // Click handler for Delete Card button
+  function handleDelete(pushedId) {
+    if (window.confirm("Are you sure you want to delete this deck?")) {
+      deleteCard(pushedId);
+      window.location.reload();
+    }
+  }
+
   return (
     <div>
       <div>
@@ -57,8 +69,8 @@ const ViewDeck = ({ setTrail }) => {
                   <p className='card-text col'>{card.back}</p>
                 </div>
                 <div className='d-flex justify-content-end mt-4'>
-                  <button className='btn btn-secondary mr-2'><FontAwesomeIcon icon="pencil-alt" /> Edit</button>
-                  <button className='btn btn-danger'><FontAwesomeIcon icon="trash-alt" /></button>
+                  <button className='btn btn-secondary mr-2' onClick={() => handleEdit(card.id)}><FontAwesomeIcon icon="pencil-alt" /> Edit</button>
+                  <button className='btn btn-danger' onClick={() => handleDelete(card.id)}><FontAwesomeIcon icon="trash-alt" /></button>
                 </div>
               </div>
             </div>
