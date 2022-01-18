@@ -1,6 +1,5 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import "bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // Import components

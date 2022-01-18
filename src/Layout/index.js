@@ -1,6 +1,5 @@
 import React, { useState} from "react";
 import { Switch, Route } from "react-router-dom";
-import 'bootstrap';
 
 // Component imports
 import Header from "./Header";
