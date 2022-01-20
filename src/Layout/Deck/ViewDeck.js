@@ -43,7 +43,6 @@ const ViewDeck = ({ setTrail }) => {
   function handleDelete(pushedId) {
     if (window.confirm("Are you sure you want to delete this deck?")) {
       deleteCard(pushedId);
-      window.location.reload();
     }
   }
 
