@@ -5,8 +5,9 @@ import { readDeck } from "../utils/api/index";
 import NotEnoughCards from "./Cards/NotEnoughCards";
 import CardBack from "./Cards/CardBack";
 import CardFront from "./Cards/CardFront";
+import Breadcrumb from './Breadcrumb';
 
-function Study({ setTrail }) {
+function Study() {
   const { deckId } = useParams();
   const [ deck, setDeck ] = useState({});
   const [ cards, setCards ] = useState([]);
@@ -17,7 +18,6 @@ function Study({ setTrail }) {
     async function loadDeck() {
       const response = await readDeck(deckId);
       setDeck(response);
-      setTrail( [ { name: response.name, link: `/decks/${deckId}` }, { name: "Study" } ] );
       setCards(response.cards);
     }
     loadDeck()
@@ -37,6 +37,7 @@ function Study({ setTrail }) {
   return (
     <div>
       <h3>Study: {deck.name}</h3>
+      <Breadcrumb trail={[ { name: deck.name, link: `/decks/${deckId}` }, { name: "Study" } ]} />
       <CardDisplay />
     </div>
   )

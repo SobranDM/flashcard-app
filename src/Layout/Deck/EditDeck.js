@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { readDeck } from '../../utils/api';
 import { updateDeck } from '../../utils/api';
+import Breadcrumb from '../Breadcrumb';
 
-const EditDeck = ({ setTrail }) => {
+const EditDeck = () => {
   const { deckId } = useParams();
   const [ deck, setDeck ] = useState({});
   const [formData, setFormData] = useState({ name: "", description: "" });
@@ -14,7 +15,6 @@ const EditDeck = ({ setTrail }) => {
       const response = await readDeck(deckId);
       setDeck(response)
       setFormData({ name: response.name, description: response.description });
-      setTrail([ { name: response.name, link: `/decks/${deckId}` }, { name: "Edit Deck" }])
     }
     loadDeck();
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -39,6 +39,7 @@ const EditDeck = ({ setTrail }) => {
 
   return (
     <div>
+      <Breadcrumb trail={[ { name: deck.name, link: `/decks/${deckId}` }, { name: "Edit Deck" }]} />
       <h3>Edit Deck</h3>
       <form onSubmit={handleSubmit}>
         <div className="form-group d-flex flex-column">

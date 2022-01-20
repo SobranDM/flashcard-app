@@ -3,12 +3,16 @@ import { useHistory } from "react-router-dom";
 import { listDecks } from "../utils/api/index";
 import { deleteDeck } from "../utils/api/index";
 
-function Home({ setTrail }) {
+function Home() {
   const [decks, setDecks] = useState([]);
 
   // List decks and set them to state
   useEffect(() => {
-    listDecks().then(setDecks)
+    async function loadDecks() {
+      const response = await listDecks();
+      setDecks(response);
+    }
+    loadDecks();
   }, []);
 
   // Setup history variable
@@ -16,7 +20,6 @@ function Home({ setTrail }) {
 
   // Click handler for Create Deck button
   function createDeck() {
-    setTrail([{ name: "Create Deck" }]);
     history.push("/decks/new");
   }
 
@@ -39,16 +42,16 @@ function Home({ setTrail }) {
   }
 
   return (
-    <div key="1">
+    <div>
       <button
         id="create-deck"
         className="btn btn-secondary mb-2"
         onClick={createDeck}>
         Create Deck
       </button>
-      {decks.map((deck) => {
+      {decks.map((deck, index) => {
         return (
-          <div className="card mb-2" key={deck.id}>
+          <div className="card mb-2" key={index}>
             <div className="card-body">
               <div className="d-flex justify-content-between">
                 <h4 className="card-title">{deck.name}</h4>

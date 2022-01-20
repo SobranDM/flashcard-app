@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { readDeck, deleteCard } from '../../utils/api';
+import Breadcrumb from '../Breadcrumb';
 
-const ViewDeck = ({ setTrail }) => {
+const ViewDeck = () => {
   const { deckId } = useParams();
   const [deck, setDeck] = useState({});
   const [cards, setCards] = useState([]);
@@ -12,7 +13,6 @@ const ViewDeck = ({ setTrail }) => {
     async function loadDeck() {
       const response = await readDeck(deckId);
       setDeck(response)
-      setTrail([{ name: response.name }])
       setCards(response.cards);
     }
     loadDeck();
@@ -48,6 +48,7 @@ const ViewDeck = ({ setTrail }) => {
 
   return (
     <div>
+      <Breadcrumb trail={[{ name: deck.name }]} />
       <div>
         <h3>{deck.name}</h3>
         <p>{deck.description}</p>

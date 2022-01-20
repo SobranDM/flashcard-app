@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { readDeck, createCard } from "../../utils/api";
 import CardForm from "./CardForm";
+import Breadcrumb from "../Breadcrumb";
 
-const AddCard = ({ setTrail }) => {
+const AddCard = () => {
   const { deckId } = useParams();
   const [formData, setFormData] = useState({ front: "", back: "" });
   const [deck, setDeck] = useState({});
@@ -14,10 +15,6 @@ const AddCard = ({ setTrail }) => {
     async function loadDeck() {
       const response = await readDeck(deckId);
       setDeck(response);
-      setTrail([
-        { name: response.name, link: `/decks/${deckId}` },
-        { name: "Add Card" },
-      ]);
     }
     loadDeck();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -45,6 +42,7 @@ const AddCard = ({ setTrail }) => {
 
   return (
     <div>
+      <Breadcrumb trail={[{ name: deck.name, link: `/decks/${deckId}` }, { name: "Add Card" }]} />
       <h3>{deck.name}: Add Card</h3>
       <CardForm formData={formData} setFormData={setFormData} />
       <button type="button" className="btn btn-secondary mr-2" name="done" onClick={(event) => handleSubmit("done")}>

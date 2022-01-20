@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 // Import components
 import Study from "./Study";
@@ -8,44 +8,33 @@ import ViewDeck from "./Deck/ViewDeck";
 import EditDeck from "./Deck/EditDeck";
 import AddCard from "./Cards/AddCard";
 import EditCard from "./Cards/EditCard";
+import NotFound from "./NotFound";
 
-const Decks = ({ trail, setTrail }) => {
+const Decks = () => {
 
   return (
     <div>
-      <nav aria-label="breadcrumb">
-        <ol className="breadcrumb">
-          <li className="breadcrumb-item" link="/"><a href="/">Home</a></li>
-          {trail.map((item, index) => {
-            if (index + 1 === trail.length) {
-              return <li className="breadcrumb-item active" aria-current="page" key={index}>{item.name}</li>
-            } else {
-              return <li className="breadcrumb-item" key={index}><a href={item.link}>{item.name}</a></li>
-            }
-          })}
-        </ol>
-      </nav>
       <Switch>
-        <Route exact path="/decks">
-          <Redirect to="/" />
-        </Route>
         <Route path="/decks/:deckId/study">
-          <Study setTrail={setTrail} />
+          <Study />
         </Route>
         <Route path="/decks/new">
-          <CreateDeck setTrail={setTrail} />
+          <CreateDeck />
         </Route>
         <Route path="/decks/:deckId/edit">
-          <EditDeck setTrail={setTrail} />
+          <EditDeck />
         </Route>
         <Route path="/decks/:deckId/cards/:cardId/edit">
-          <EditCard setTrail={setTrail} />
+          <EditCard />
         </Route>
         <Route path="/decks/:deckId/cards/new">
-          <AddCard setTrail={setTrail} />
+          <AddCard />
         </Route>
         <Route path="/decks/:deckId">
-          <ViewDeck setTrail={setTrail} />
+          <ViewDeck />
+        </Route>
+        <Route>
+          <NotFound />
         </Route>
       </Switch>
     </div>

@@ -2,8 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { createDeck } from "../../utils/api/index";
+import Breadcrumb from "../Breadcrumb";
 
-const CreateDeck = ({ setTrail }) => {
+const CreateDeck = () => {
   // Controlled form data and history setup
   const [formData, setFormData] = useState({ name: "", description: "" })
   const history = useHistory();
@@ -27,6 +28,7 @@ const CreateDeck = ({ setTrail }) => {
 
   return (
     <div>
+      <Breadcrumb trail={[{name: "Create Deck"}]} />
       <h3>Create Deck</h3>
       <form onSubmit={handleSubmit}>
         <div className="form-group d-flex flex-column">

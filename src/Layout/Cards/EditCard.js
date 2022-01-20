@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { readDeck, readCard, updateCard } from '../../utils/api';
 import CardForm from './CardForm';
+import Breadcrumb from '../Breadcrumb';
 
-const EditCard = ({ setTrail }) => {
+const EditCard = () => {
   const { deckId, cardId } = useParams();
   const [ deck, setDeck ] = useState({});
   const [ formData, setFormData ] = useState({ front: "", back: "" });
@@ -13,7 +14,6 @@ const EditCard = ({ setTrail }) => {
     async function loadDeck() {
       const response = await readDeck(deckId);
       setDeck(response);
-      setTrail([ { name: response.name, link: `/decks/${deckId}` }, { name: `Edit Card ${cardId}` }]);
     }
 
     async function loadCard() {
@@ -42,6 +42,7 @@ const EditCard = ({ setTrail }) => {
 
   return (
     <div>
+      <Breadcrumb trail={[ { name: deck.name, link: `/decks/${deckId}` }, { name: `Edit Card ${cardId}` }]} />
       <h3>Edit Card</h3>
       <CardForm formData={formData} setFormData={setFormData} />
       <button type="button" className="btn btn-secondary mr-2" name="cancel" onClick={handleCancel}>
