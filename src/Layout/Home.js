@@ -5,6 +5,7 @@ import { deleteDeck } from "../utils/api/index";
 
 function Home() {
   const [decks, setDecks] = useState([]);
+  const [deckChange, triggerDeckChange] = useState(0);
 
   // List decks and set them to state
   useEffect(() => {
@@ -13,7 +14,7 @@ function Home() {
       setDecks(response);
     }
     loadDecks();
-  }, []);
+  }, [deckChange]);
 
   // Setup history variable
   const history = useHistory();
@@ -27,7 +28,7 @@ function Home() {
   function deleteButton(deckId) {
     if (window.confirm("Are you sure you want to delete this deck?")) {
       deleteDeck(deckId);
-      history.push("/");
+      triggerDeckChange(deckChange + 1);
     }
   }
 

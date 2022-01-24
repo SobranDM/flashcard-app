@@ -7,6 +7,7 @@ const ViewDeck = () => {
   const { deckId } = useParams();
   const [deck, setDeck] = useState({});
   const [cards, setCards] = useState([]);
+  const [deckChange, triggerDeckChange] = useState(0);
   const history = useHistory();
 
   useEffect(() => {
@@ -17,7 +18,7 @@ const ViewDeck = () => {
     }
     loadDeck();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [deckId])
+  }, [deckId, deckChange])
 
   // Click handler for Study Deck button
   function studyDeck() {
@@ -41,8 +42,9 @@ const ViewDeck = () => {
 
   // Click handler for Delete Card button
   function handleDelete(pushedId) {
-    if (window.confirm("Are you sure you want to delete this deck?")) {
+    if (window.confirm("Are you sure you want to delete this card?")) {
       deleteCard(pushedId);
+      triggerDeckChange(deckChange + 1);
     }
   }
 
